@@ -1,0 +1,92 @@
+.error {
+    color: red;
+}
+
+.info-box {
+    cursor: pointer;
+}
+
+.icon_left {
+     margin-right: 8px;
+}
+
+.go_back {
+    font-style: unset;
+    font-size: 15px;
+}
+
+a {
+    color: #673ab7;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #5b33a1;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.btn-dark, .btn-dark:visited {
+    background-color: #673ab7;
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background-color: #5b33a1;
+    color: #fff;
+}
+
+.dark {
+    background-color: #eeeeee;
+}
+
+.dtp-btn-clear, .dtp-btn-clear:focus {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.dtp-btn-clear:hover {
+    background-color: #e04c1e;
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #673ab7;
+}
+
+.posts {
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+.panel-heading a, .panel-heading a:hover {
+    color: #fff;
+}
+
+.btn:focus {
+    color: #fff;
+}
+
+#profile-image {
+    cursor: pointer;
+}
+
+#date-line {
+    width: 40%;
+}
+
+.form-inline-elements {
+    width: 125px;
+    margin-left: 25px;
+}
+
+#reservation-list {
+    padding-top: 25px;
+    margin-bottom: 25px;
+}
+
+#training_reservation {
+    margin-top: 7px;
+}
