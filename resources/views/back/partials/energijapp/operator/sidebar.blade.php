@@ -4,10 +4,10 @@
         <!-- User info -->
         <div class="user-info">
             <div class="image">
-                <img src="{{ asset(session('user')->image) }}" width="79" height="79" alt="Admin" />
+                <img src="{{ secure_asset(session('user')->image) }}" width="79" height="79" alt="Admin" />
             </div>
             <div class="pull-right">
-                <img src="{{ asset('/images/logo/scr.png') }}" width="99" height="99" />
+                <img src="{{ secure_asset('/images/logo/scr.png') }}" width="99" height="99" />
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ session('user')->first_name }} {{ session('user')->last_name }}</div>

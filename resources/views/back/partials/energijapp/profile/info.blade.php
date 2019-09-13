@@ -1,7 +1,7 @@
 <div class="profile-header">&nbsp;</div>
 <div class="profile-body">
     <div class="image-area">
-        <img id="profile-image" src="{{ asset($user->image) }}" width="135" height="135" alt="AdminBSB - Profile Image" />
+        <img id="profile-image" src="{{ secure_asset($user->image) }}" width="135" height="135" alt="AdminBSB - Profile Image" />
         <form action="{{ url('/energijapp/images/user/'.$user->id) }}" method="POST" enctype="multipart/form-data">
             @method('PATCH')
             @csrf

@@ -10,7 +10,7 @@
 
             <div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="0.5s">
                 <div class="trainer-thumb">
-                    <img src="{{ asset($training->logo) }}" class="img-responsive" alt="Trening">
+                    <img src="{{ secure_asset($training->logo) }}" class="img-responsive" alt="Trening">
                     <div class="trainer-overlay">
                         <div class="trainer-des">
                             <h2>{{ $training->intensity }} intenzitet</h2>

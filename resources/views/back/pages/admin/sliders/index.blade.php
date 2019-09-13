@@ -31,7 +31,7 @@
 
                 <tr>
                     <td>{{ $slider->position }}</td>
-                    <td><img class="img-responsive" width="400" src="{{ asset($slider->image) }}"/></td>
+                    <td><img class="img-responsive" width="400" src="{{ secure_asset($slider->image) }}"/></td>
                     <td><a href="{{ url('/admin/sliders/'.$slider->id.'/edit') }}" class="btn btn-dark waves-effect btn-xs"><i class="material-icons">edit</i></a></td>
                     <td>
                         <a class="btn dtp-btn-clear waves-effect btn-xs" href="#" data-toggle="modal" data-target="#delete-modal{{ $i }}">

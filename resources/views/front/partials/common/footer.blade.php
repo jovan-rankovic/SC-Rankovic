@@ -20,7 +20,7 @@
             </div>
 
             <div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
-                <img src="{{ asset('images/logo/scr.png') }}" height="150" width="150">
+                <img src="{{ secure_asset('images/logo/scr.png') }}" height="150" width="150">
             </div>
 
             <div class="wow fadeInUp col-md-3 col-sm-4" data-wow-delay="1s">
@@ -49,7 +49,7 @@
                             <h4 class="modal-title">Autor</h4>
                         </div>
                         <div class="modal-body">
-                            <img src="{{ asset('images/user/author.jpg') }}" class="img-responsive img-circle center-block" width="200" height="200"><br/>
+                            <img src="{{ secure_asset('images/user/author.jpg') }}" class="img-responsive img-circle center-block" width="200" height="200"><br/>
                             <p class="text-center"><a href="https://www.linkedin.com/in/jovan-rankovic/"><strong>LinkedIn</strong></a></p>
                         </div>
                     </div>

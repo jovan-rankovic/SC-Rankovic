@@ -45,8 +45,8 @@
                     <td>{{ $training->target }}</td>
                     <td>{{ $training->benefits }}</td>
                     <td>{{ $training->description }}</td>
-                    <td><img class="img-responsive" src="{{ asset($training->logo) }}"/></td>
-                    <td><img class="img-responsive" src="{{ asset($training->image) }}"/></td>
+                    <td><img class="img-responsive" src="{{ secure_asset($training->logo) }}"/></td>
+                    <td><img class="img-responsive" src="{{ secure_asset($training->image) }}"/></td>
                     <td>{{ $training->reservations? 'Da' : 'Ne' }}</td>
                     <td><a href="{{ url('/admin/trainings/'.$training->id.'/edit') }}" class="btn btn-dark waves-effect btn-xs"><i class="material-icons">edit</i></a></td>
                     <td>

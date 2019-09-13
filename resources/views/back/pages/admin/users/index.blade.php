@@ -48,7 +48,7 @@
                 <td>{{ $user->phone }}</td>
                 <td>@if($user->address) {{$user->address}} @else  @endif</td>
 {{--                <td>@if($user->email_verified_at != NULL)Da @else Ne @endif</td>--}}
-                <td><img class="img-responsive" width="52" height="52" src="{{ asset($user->image) }}"/></td>
+                <td><img class="img-responsive" width="52" height="52" src="{{ secure_asset($user->image) }}"/></td>
                 <td><a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-dark waves-effect btn-xs"><i class="material-icons">edit</i></a></td>
                 <td>
                     <a class="btn dtp-btn-clear waves-effect btn-xs" href="#" data-toggle="modal" data-target="#delete-modal{{ $i }}">

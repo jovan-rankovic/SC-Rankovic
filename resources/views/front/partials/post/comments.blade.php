@@ -15,7 +15,7 @@
 
         <div class="media">
             <div class="media-object pull-left col-md-2 col-sm-4 col-xs-3">
-                <img src="{{ asset($comment->user->image) }}" height="120" width="120" class="img-responsive img-circle" alt="blog">
+                <img src="{{ secure_asset($comment->user->image) }}" height="120" width="120" class="img-responsive img-circle" alt="blog">
             </div>
             <div class="media-body">
 

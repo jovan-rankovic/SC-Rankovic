@@ -23,7 +23,7 @@
 @section('moreCSS')
     <style>
         #blog-header {
-            background: url('{{ asset($training->image) }}') 50% 0 repeat-y fixed;
+            background: url('{{ secure_asset($training->image) }}') 50% 0 repeat-y fixed;
         }
     </style>
 @endsection

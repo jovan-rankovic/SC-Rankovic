@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <img class="img-responsive" width="180" src="{{ asset($training->logo) }}" />
+                        <img class="img-responsive" width="180" src="{{ secure_asset($training->logo) }}" />
                     </div>
                     <div class="form-group">
                         <label for="logo"><p><i>Logo:</i></p></label>
@@ -72,7 +72,7 @@
                         <br/>
                     </div>
                     <div class="form-group">
-                        <img class="img-responsive" width="180" src="{{ asset($training->image) }}" />
+                        <img class="img-responsive" width="180" src="{{ secure_asset($training->image) }}" />
                     </div>
                     <div class="form-group">
                         <label for="image"><p><i>Slika:</i></p></label>

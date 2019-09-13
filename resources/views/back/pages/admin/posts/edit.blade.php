@@ -41,7 +41,7 @@
                         <input name="user_id" id="user_id" type="hidden" class="form-control" value="{{ session('user')->id }}" />
                     </div>
                     <div class="form-group">
-                        <img class="img-responsive" width="400" src="{{ asset($post->image) }}" />
+                        <img class="img-responsive" width="400" src="{{ secure_asset($post->image) }}" />
                     </div>
                     <div class="form-group">
                         <label for="image"><i>Slika:</i></label>

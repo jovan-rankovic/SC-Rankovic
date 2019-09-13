@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <img class="img-responsive" width="400" src="{{ asset($slider->image) }}" />
+                        <img class="img-responsive" width="400" src="{{ secure_asset($slider->image) }}" />
                     </div>
                     <div class="form-group">
                         <label for="image"><i>Slika:</i></label>

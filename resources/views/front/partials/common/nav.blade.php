@@ -29,7 +29,7 @@
 
                         @if(session('user')->role->name == 'admin')
                             <li><a href="{{ url('/admin') }}">Admin</a></li>
-                            <li><a href="{{ asset('files/dipl_php_lara_jovan_rankovic_145_14') }}">Dokumentacija</a></li>
+                            <li><a href="{{ secure_asset('files/dipl_php_lara_jovan_rankovic_145_14') }}">Dokumentacija</a></li>
                         @endif
 
                             <li><a href="{{ url('/logout') }}">Izloguj se</a></li>

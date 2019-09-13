@@ -64,7 +64,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <img class="img-responsive img-circle" width="65" height="65" src="{{ asset($user->image) }}" />
+                        <img class="img-responsive img-circle" width="65" height="65" src="{{ secure_asset($user->image) }}" />
                     </div>
                     <div class="form-group">
                         <label for="image"><p><i>Slika:</i></p></label>

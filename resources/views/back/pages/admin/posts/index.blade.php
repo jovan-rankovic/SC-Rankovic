@@ -66,7 +66,7 @@
                                 </p>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="{{ $post->id }}s">
-                                <img class="img img-responsive" src="{{ asset($post->image) }}" alt="post_image">
+                                <img class="img img-responsive" src="{{ secure_asset($post->image) }}" alt="post_image">
                             </div>
                         </div>
                     </div>
