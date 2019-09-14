@@ -12,7 +12,6 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.7.*",
-        "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
@@ -30,7 +29,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "autoload": {
