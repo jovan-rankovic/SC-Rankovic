@@ -37,13 +37,13 @@ class UserController extends Controller
             $date_value = Carbon::now()->toDateString();
         }
 
-        $query = User::whereHas('payment', function (Builder $query1) use ($date_value, $date_operator) {
+        $pagination = User::whereHas('payment', function (Builder $query1) use ($date_value, $date_operator) {
             $query1->where('valid_thru', $date_operator, $date_value);
         })->where('first_name', $fn_operator, '%'.$request->first_name.'%')
         ->where('last_name', $ln_operator, '%'.$request->last_name.'%')
-        ->orderBy('card_number')->get();
+        ->orderBy('card_number')->paginate(5);
 
-        return response()->json($query);
+        return response()->json($pagination);
     }
 
 

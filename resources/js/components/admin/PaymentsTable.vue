@@ -56,6 +56,18 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="text-center">
+                    <button class="btn btn-dark" @click="fetchPaginatePayments(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
+                        <
+                    </button>
+
+                    <span>{{ pagination.current_page }} od {{ pagination.last_page }}</span>
+
+                    <button class="btn btn-dark" @click="fetchPaginatePayments(pagination.next_page_url)" :disabled="!pagination.next_page_url">
+                        >
+                    </button>
+                </div>
+                <br/>
             </div>
         </div>
     </div>
@@ -97,7 +109,9 @@
                     }
                 },
                 paymentSum: 0,
-                isVisible: false
+                isVisible: false,
+                url: '/api/payments',
+                pagination: []
             }
         },
         mounted() {
@@ -122,7 +136,9 @@
             },
 
             searchPayments() {
-                axios.get('/api/payments', {
+                let $this = this;
+
+                axios.get(this.url, {
                     params: {
                         date_from: this.date_from,
                         date_to: this.date_to,
@@ -132,12 +148,27 @@
                 })
                 .then(response => {
                     this.isVisible = true;
-                    this.payments = response.data[0];
-                    this.paymentSum = response.data[1]
+                    this.payments = response.data[0].data;
+                    this.paymentSum = response.data[1];
+                    $this.pagination = response.data[0]
                 })
                 .catch(error => {
                     console.log(error)
                 })
+            },
+
+            makePagination(data) {
+                this.pagination = {
+                    current_page: data.current_page,
+                    last_page: data.last_page,
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url
+                }
+            },
+
+            fetchPaginatePayments(url) {
+                this.url = url;
+                this.searchPayments()
             }
         }
     }

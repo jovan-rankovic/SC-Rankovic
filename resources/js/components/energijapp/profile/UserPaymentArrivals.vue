@@ -45,6 +45,18 @@
                 </div>
             </div>
         </div>
+        <div class="text-center">
+            <button class="btn btn-dark" @click="fetchPaginateUserPayments(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
+                <
+            </button>
+
+            <span>{{ pagination.current_page }} od {{ pagination.last_page }}</span>
+
+            <button class="btn btn-dark" @click="fetchPaginateUserPayments(pagination.next_page_url)" :disabled="!pagination.next_page_url">
+                >
+            </button>
+        </div>
+        <br/>
     </div>
 </template>
 
@@ -85,7 +97,9 @@
                     },
                 },
                 calendarEndDate: new Date(),
-                calendarValues: []
+                calendarValues: [],
+                url: '/api/payments/user/' + this.user_id + '/arrivals',
+                pagination: []
             }
         },
         created() {
@@ -114,9 +128,12 @@
             },
 
             getUserPaymentArrivals() {
-                axios.get('/api/payments/user/' + this.user_id + '/arrivals')
+                let $this = this;
+
+                axios.get(this.url)
                     .then(response => {
-                        this.payments = response.data
+                        this.payments = response.data.data;
+                        $this.pagination = response.data
                     })
                     .catch(error => {
                         console.log(error)
@@ -129,6 +146,20 @@
                 }).catch(error => {
                     console.log(error)
                 })
+            },
+
+            makePagination(data) {
+                this.pagination = {
+                    current_page: data.current_page,
+                    last_page: data.last_page,
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url
+                }
+            },
+
+            fetchPaginateUserPayments(url) {
+                this.url = url;
+                this.getUserPaymentArrivals()
             }
         }
     }

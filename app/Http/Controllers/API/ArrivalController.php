@@ -29,21 +29,19 @@ class ArrivalController extends Controller
         if($request->trainer_id == null)
             $trainer_operator = '<>';
 
-        $query = Arrival::whereBetween('date', [$date_from, $date_to])
+        $pagination = Arrival::whereBetween('date', [$date_from, $date_to])
             ->where('training_id', $training_operator, $request->training_id)
             ->where('trainer_id', $trainer_operator, $request->trainer_id)
-            ->get();
+            ->paginate(10);
 
-        $count = $query->count();
-
-        foreach ($query as $entity)
+        foreach ($pagination as $entity)
         {
             $entity->user;
             $entity->training;
             $entity->trainer;
         }
 
-        return response()->json(array($query, $count));
+        return response()->json($pagination);
     }
 
 

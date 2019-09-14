@@ -27,6 +27,18 @@ class PaymentController extends Controller
         if($request->operator_id == null)
             $operator_operator = '<>';
 
+        $pagination = Payment::whereBetween('payment_date', [$date_from, $date_to])
+            ->where('price_id', $price_operator, $request->price_id)
+            ->where('operator_id', $operator_operator, $request->operator_id)
+            ->paginate(10);
+
+        foreach ($pagination as $entity)
+        {
+            $entity->price;
+            $entity->user;
+            $entity->operator;
+        }
+
         $query = Payment::whereBetween('payment_date', [$date_from, $date_to])
             ->where('price_id', $price_operator, $request->price_id)
             ->where('operator_id', $operator_operator, $request->operator_id)
@@ -34,14 +46,9 @@ class PaymentController extends Controller
 
         $sum = 0;
         foreach ($query as $entity)
-        {
-            $entity->price;
-            $entity->user;
-            $entity->operator;
             $sum += $entity->price->amount;
-        }
 
-        return response()->json(array($query, $sum));
+        return response()->json(array($pagination, $sum));
     }
 
 
@@ -86,24 +93,26 @@ class PaymentController extends Controller
 
     public function getUserPayments($id)
     {
+        $pagination = Payment::where('user_id', $id)->paginate(10);
+
+        foreach ($pagination as $entity)
+            $entity->price;
+
         $query = Payment::where('user_id', $id)->get();
         $sum = 0;
 
         foreach ($query as $entity)
-        {
-            $entity->price;
             $sum += $entity->price->amount;
-        }
 
-        return response()->json(array($query, $sum));
+        return response()->json(array($pagination, $sum));
     }
 
 
     public function getUserPaymentArrivals($id)
     {
-        $query = Payment::where('user_id', $id)->get();
+        $pagination = Payment::where('user_id', $id)->paginate(7);
 
-        foreach ($query as $entity)
+        foreach ($pagination as $entity)
         {
             $entity->price;
             $arrivals = $entity->arrivals;
@@ -115,6 +124,6 @@ class PaymentController extends Controller
             }
         }
 
-        return response()->json($query);
+        return response()->json($pagination);
     }
 }

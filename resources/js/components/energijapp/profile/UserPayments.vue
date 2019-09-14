@@ -28,6 +28,18 @@
                 </tbody>
             </table>
         </div>
+        <div class="text-center">
+            <button class="btn btn-dark" @click="fetchPaginateUserPayments(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
+                <
+            </button>
+
+            <span>{{ pagination.current_page }} od {{ pagination.last_page }}</span>
+
+            <button class="btn btn-dark" @click="fetchPaginateUserPayments(pagination.next_page_url)" :disabled="!pagination.next_page_url">
+                >
+            </button>
+        </div>
+        <br/>
     </div>
 </template>
 
@@ -47,7 +59,9 @@
                         title: ''
                     }
                 },
-                userPaymentSum: 0
+                userPaymentSum: 0,
+                url: '/api/payments/user/'+this.user_id,
+                pagination: []
             }
         },
         created() {
@@ -55,10 +69,13 @@
         },
         methods: {
             getUserPayments() {
-                axios.get('/api/payments/user/'+this.user_id)
+                let $this = this;
+
+                axios.get(this.url)
                     .then(response => {
-                        this.payments = response.data[0];
-                        this.userPaymentSum = response.data[1]
+                        this.payments = response.data[0].data;
+                        this.userPaymentSum = response.data[1];
+                        $this.pagination = response.data[0]
                     })
                     .catch(error => {
                         console.log(error)
@@ -71,6 +88,20 @@
                 }).catch(error => {
                     console.log(error)
                 })
+            },
+
+            makePagination(data) {
+                this.pagination = {
+                    current_page: data.current_page,
+                    last_page: data.last_page,
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url
+                }
+            },
+
+            fetchPaginateUserPayments(url) {
+                this.url = url;
+                this.getUserPayments()
             }
         }
     }

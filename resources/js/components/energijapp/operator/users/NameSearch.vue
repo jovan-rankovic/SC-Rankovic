@@ -39,6 +39,18 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="text-center">
+                <button class="btn btn-dark" @click="fetchPaginateUsers(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
+                    <
+                </button>
+
+                <span>{{ pagination.current_page }} od {{ pagination.last_page }}</span>
+
+                <button class="btn btn-dark" @click="fetchPaginateUsers(pagination.next_page_url)" :disabled="!pagination.next_page_url">
+                    >
+                </button>
+            </div>
+            <br/>
         </div>
     </div>
 </template>
@@ -57,12 +69,16 @@
                     first_name: '',
                     last_name: ''
                 },
-                isVisible: false
+                isVisible: false,
+                url: '/api/users/name_search',
+                pagination: []
             }
         },
         methods: {
             nameSearch() {
-                axios.get('/api/users/name_search', {
+                let $this = this;
+
+                axios.get(this.url, {
                     params: {
                         first_name: this.first_name,
                         last_name: this.last_name,
@@ -71,11 +87,26 @@
                 })
                 .then(response => {
                     this.isVisible = true;
-                    this.users = response.data
+                    this.users = response.data.data;
+                    $this.pagination = response.data
                 })
                 .catch(error => {
                     console.log(error)
                 })
+            },
+
+            makePagination(data) {
+                this.pagination = {
+                    current_page: data.current_page,
+                    last_page: data.last_page,
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url
+                }
+            },
+
+            fetchPaginateUsers(url) {
+                this.url = url;
+                this.nameSearch()
             }
         }
     }

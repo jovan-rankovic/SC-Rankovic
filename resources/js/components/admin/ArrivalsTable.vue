@@ -56,6 +56,18 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="text-center">
+                    <button class="btn btn-dark" @click="fetchPaginateArrivals(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
+                        <
+                    </button>
+
+                    <span>{{ pagination.current_page }} od {{ pagination.last_page }}</span>
+
+                    <button class="btn btn-dark" @click="fetchPaginateArrivals(pagination.next_page_url)" :disabled="!pagination.next_page_url">
+                        >
+                    </button>
+                </div>
+                <br/>
             </div>
         </div>
     </div>
@@ -97,7 +109,9 @@
                     }
                 },
                 arrivalCount: 0,
-                isVisible: false
+                isVisible: false,
+                url: '/api/arrivals',
+                pagination: []
             }
         },
         mounted() {
@@ -122,7 +136,9 @@
             },
 
             searchArrivals() {
-                axios.get('/api/arrivals', {
+                let $this = this;
+
+                axios.get(this.url, {
                     params: {
                         date_from: this.date_from,
                         date_to: this.date_to,
@@ -132,12 +148,27 @@
                 })
                 .then(response => {
                     this.isVisible = true;
-                    this.arrivals = response.data[0];
-                    this.arrivalCount = response.data[1]
+                    this.arrivals = response.data.data;
+                    this.arrivalCount = response.data.total;
+                    $this.pagination = response.data
                 })
                 .catch(error => {
                     console.log(error)
                 })
+            },
+
+            makePagination(data) {
+                this.pagination = {
+                    current_page: data.current_page,
+                    last_page: data.last_page,
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url
+                }
+            },
+
+            fetchPaginateArrivals(url) {
+                this.url = url;
+                this.searchArrivals()
             }
         }
     }
