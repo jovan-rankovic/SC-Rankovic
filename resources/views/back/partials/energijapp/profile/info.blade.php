@@ -10,6 +10,13 @@
 
         <h6 class="text-center">Klikni sliku za promenu</h6>
     </div>
+    @isset($errors)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-warning">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endisset
     <div class="content-area">
         <h3>{{ $user->first_name.' '.$user->last_name }}</h3>
         <p>{{ $user->card_number }}</p>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageRequest;
 use App\Http\Requests\UserRequest;
 use App\Role;
 use App\User;
@@ -180,7 +181,7 @@ class UserController extends Controller
     }
 
 
-    public function image_update(Request $request, User $user)
+    public function image_update(ImageRequest $request, User $user)
     {
         $image = $request->imgUser;
 
