@@ -20,7 +20,7 @@ class UserRequest extends FormRequest
             'phone' => 'required|numeric|digits_between:9,10',
             'birth_date' => 'required|date',
             'image' => 'image|max:2000|dimensions:ratio=1/1|mimes:jpeg,png,jpg',
-            'card_number' => 'numeric|digits:5',
+            'card_number' => 'numeric|digits:5|unique:users',
             'address' => 'required|min:5|max:100',
             'role_id' => 'numeric|not_in:0',
             'password' => [
@@ -57,6 +57,7 @@ class UserRequest extends FormRequest
             'image.mimes' => 'Dozvoljeni formati su: jpg, jpeg i png.',
             'card_number.numeric' => 'Broj kartice može sadržati samo brojeve.',
             'card_number.digits' => 'Broj kartice mora imati 5 cifara.',
+            'card_number.unique' => 'Broj kartice već postoji.',
             'address.required' => 'Adresa je obavezna.',
             'address.min' => 'Adresa mora imati bar 5 karaktera.',
             'address.max' => 'Adresa može imati najviše 100 karaktera.',

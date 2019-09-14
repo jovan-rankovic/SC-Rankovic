@@ -25,7 +25,7 @@ class ReservationController extends Controller
         if($my_reservations >= 2)
             $isReservable = false;
 
-        return response('Rezervacija napravljena.', 201)->json(array($reservations, $my_reservations, $isReservable));
+        return response(array($reservations, $my_reservations, $isReservable), 201);
     }
 
 
@@ -74,6 +74,6 @@ class ReservationController extends Controller
         $reservations = Reservation::where('training_id', $request->training_id)->where('date', $request->date)->count();
         $my_reservations = Reservation::where('training_id', $request->training_id)->where('date', $request->date)->where('user_id', $id)->count();
 
-        return response('Rezervacije obrisane.', 204)->json(array($reservations, $my_reservations));
+        return response(array($reservations, $my_reservations), 204);
     }
 }

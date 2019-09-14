@@ -30,7 +30,7 @@
             @foreach($services as $service)
 
                 <tr>
-                    <td>${{ $service->price->amount }}</td>
+                    <td>{{ $service->price->amount }} din.</td>
                     <td>{{ $service->name }}</td>
                     <td><a href="{{ url('/admin/services/'.$service->id.'/edit') }}" class="btn btn-dark waves-effect btn-xs"><i class="material-icons">edit</i></a></td>
                     <td>

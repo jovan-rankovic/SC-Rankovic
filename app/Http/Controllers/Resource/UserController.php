@@ -39,7 +39,7 @@ class UserController extends Controller
                 $imgName = time().rand().$image->getClientOriginalName();
                 $image->move(public_path().'/'.$imgFolder, $imgName);
 
-                User::create([
+                $user = User::create([
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
@@ -52,15 +52,15 @@ class UserController extends Controller
                     'address' => $request->address
                 ]);
 
-                if(str_replace(url('/'), '', url()->previous() == '/admin/users/create'))
+                if(str_replace(url('/'), '', url()->previous()) == '/admin/users/create')
                     return redirect('/admin/users');
                 else
-                    return redirect('/energijapp/search');
+                    return redirect('/energijapp/profile' . '/' . $user->id);
             }
         }
         else
         {
-            User::create([
+            $user = User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
@@ -72,7 +72,10 @@ class UserController extends Controller
                 'address' => $request->address
             ]);
 
-            return redirect('/energijapp/search');
+            if(str_replace(url('/'), '', url()->previous()) == '/admin/users/create')
+                return redirect('/admin/users');
+            else
+                return redirect('/energijapp/profile' . '/' . $user->id);
         }
     }
 
@@ -148,7 +151,10 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect('/energijapp/profile' . '/' . $user->id);
+        if(str_replace(url('/'), '', url()->previous()) == '/admin/users/'.$user->id.'/edit')
+            return redirect('/admin/users');
+        else
+            return redirect('/energijapp/profile' . '/' . $user->id);
     }
 
 

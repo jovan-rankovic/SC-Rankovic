@@ -51,8 +51,10 @@ Route::group(['namespace' => 'Resource', 'prefix' => 'energijapp', 'middleware' 
 
 
 Route::group(['namespace' => 'Resource', 'prefix' => 'energijapp', 'middleware' => 'privileged'], function () {
-    Route::get('/user/create', 'UserController@create');
-    Route::get('/user/{user}/edit', 'UserController@edit');
+    Route::get('/users/create', 'UserController@create');
+    Route::post('/users', 'UserController@store');
+    Route::get('/users/{user}/edit', 'UserController@edit');
+    Route::patch('/users/{user}', 'UserController@update');
     Route::get('/search', 'UserController@search');
     Route::get('/reservations', 'ReservationController@index');
     Route::get('/arrivals/create/payment/{id}', 'ArrivalController@create');
@@ -63,7 +65,7 @@ Route::group(['namespace' => 'Resource', 'prefix' => 'energijapp', 'middleware' 
 
 
 Route::group(['namespace' => 'Resource', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::resource('/users', 'UserController')->except('show');
+    Route::resource('/users', 'UserController')->except('show', 'store', 'update');
     Route::resource('/posts', 'PostController')->except('show');
     Route::resource('/sliders', 'SliderController')->except('show');
     Route::resource('/menus', 'MenuController')->except('show');

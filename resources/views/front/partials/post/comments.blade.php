@@ -15,7 +15,7 @@
 
         <div class="media">
             <div class="media-object pull-left col-md-2 col-sm-4 col-xs-3">
-                <img src="{{ secure_asset($comment->user->image) }}" height="120" width="120" class="img-responsive img-circle" alt="blog">
+                <img src="{{ asset($comment->user->image) }}" height="120" width="120" class="img-responsive img-circle" alt="blog">
             </div>
             <div class="media-body">
 
@@ -83,7 +83,7 @@
 
                 @endif
 
-                <h4 class="media-heading">{{ $comment->user->first_name }} {{ $comment->user->last_name }}</h4>
+                <h4 class="media-heading">{{ $comment->user->first_name }} {{ $comment->user->last_name }} @if($comment->user->id == $post->user->id) <small class="error">Autor</small> @endif</h4>
                 <h5>{{ $comment->updated_at->format('d.m.Y. H:i') }} @if($comment->updated_at != $comment->created_at) <i>(izmenjeno)</i> @endif</h5>
                 <p id="comment">{{ $comment->content }}</p>
             </div>

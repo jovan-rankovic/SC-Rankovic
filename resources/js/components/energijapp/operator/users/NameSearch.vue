@@ -20,7 +20,7 @@
             <br/>
             <div class="form-group">
                 <button type="button" name="searchUsrBtn" id="searchUsrBtn" class="btn btn-dark waves-effect waves-light" @click="nameSearch"><i class="material-icons">search</i> Nađi</button>
-                <a href="/energijapp/user/create" class="btn btn-dark pull-right"><i class="material-icons">add</i> Dodaj korisnika</a>
+                <a href="/energijapp/users/create" class="btn btn-dark pull-right"><i class="material-icons">add</i> Dodaj korisnika</a>
             </div>
         </form>
 

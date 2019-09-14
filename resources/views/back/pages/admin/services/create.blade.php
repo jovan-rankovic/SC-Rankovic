@@ -36,7 +36,7 @@
                             <option value="0">Izaberi cenovnu kategoriju...</option>
 
                             @foreach($prices as $price)
-                                <option value="{{ $price->id }}">${{ $price->amount }}</option>
+                                <option value="{{ $price->id }}">{{ $price->amount }} din.</option>
                             @endforeach
 
                         </select>

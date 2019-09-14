@@ -24,7 +24,7 @@
                 @endisset
 
                 <p class="lead">Dodaj korisnika</p>
-                <form action="{{ url('/admin/users') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/energijapp/users') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <div class="form-line">

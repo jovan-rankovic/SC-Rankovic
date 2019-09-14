@@ -24,7 +24,7 @@
                 @endisset
 
                 <p class="lead">Edit a user</p>
-                <form action="{{ url('/admin/users/'.$user->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/energijapp/users/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
@@ -64,7 +64,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <img class="img-responsive img-circle" width="65" height="65" src="{{ secure_asset($user->image) }}" />
+                        <img class="img-responsive img-circle" width="65" height="65" src="{{ asset($user->image) }}" />
                     </div>
                     <div class="form-group">
                         <label for="image"><p><i>Slika:</i></p></label>
