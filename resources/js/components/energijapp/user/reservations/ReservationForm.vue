@@ -113,7 +113,7 @@
             },
 
             storeReservation() {
-                axios.post('/api/reservations/', {
+                axios.post('/api/reservations', {
                     user_id: this.user_id,
                     training_id: this.training_id,
                     date: this.date
