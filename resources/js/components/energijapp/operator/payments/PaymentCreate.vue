@@ -62,7 +62,7 @@
             },
 
             storePayment() {
-                axios.post('/api/payments/', {
+                axios.post('/api/payments', {
                     price_id: this.price_id,
                     payment_date: this.payment_date,
                     valid_thru: this.valid_thru,

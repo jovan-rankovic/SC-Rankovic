@@ -82,7 +82,7 @@
             },
 
             storeArrival() {
-                axios.post('/api/arrivals/', {
+                axios.post('/api/arrivals', {
                     date: this.date,
                     training_id: this.training_id,
                     trainer_id: this.trainer_id,
