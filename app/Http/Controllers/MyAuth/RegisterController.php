@@ -24,20 +24,6 @@ class RegisterController extends Controller
                     'email_verified_at' => date('Y-d-m H:i:s')
                 ]);
 
-//                if($user)
-//                {
-//                    $activation_link = url('/register').'/'.$user->remember_token;
-//
-//                    $subject = 'EnergyFitness - Activation';
-//                    $headers = 'From: EnergyFitness e.fitns@gmail.com';
-//
-//                    mail($user->email, $subject, $activation_link, $headers);
-//
-//                    \Log::info($user->first_name.' '.$user->last_name.' registered, activation link was sent.');
-//
-//                    return redirect('/')->with('message', 'Aktivacioni link poslat na e-mail adresu.');
-//                }
-
                 \Log::info($user->first_name.' '.$user->last_name.' registered.');
 
                 return redirect('/')->with('message', 'Registracija uspešna.');
@@ -48,22 +34,5 @@ class RegisterController extends Controller
 
                 return redirect('/')->with('message', 'Greška, probajte ponovo kasnije.');
             }
-    }
-
-    public function activate(Request $request)
-    {
-        $user = User::where('remember_token', $request->remember_token)
-        ->update([
-            'email_verified_at' => date('Y-d-m H:i:s')
-        ]);
-
-        if($user)
-        {
-            return redirect('/')->with('message', 'E-mail verifikovan.');
-        }
-        else
-        {
-            return redirect('/')->with('message', 'Problem sa verifikacijom e-maila.');
-        }
     }
 }
