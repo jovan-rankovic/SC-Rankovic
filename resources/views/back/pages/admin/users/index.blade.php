@@ -38,7 +38,7 @@
             @foreach($users as $user)
 
             <tr>
-                <td>@if($user->card_number) {{$user->card_number}} @else  @endif</td>
+                <td>{{ $user->card_number }}</td>
                 <td>{{ $user->first_name }}</td>
                 <td>{{ $user->last_name }}</td>
                 <td>{{ $user->email }}</td>
@@ -46,8 +46,7 @@
                 <td>{{ $user->created_at->format('d.m.Y.') }}</td>
                 <td>{{ $user->birth_date }}</td>
                 <td>{{ $user->phone }}</td>
-                <td>@if($user->address) {{$user->address}} @else  @endif</td>
-{{--                <td>@if($user->email_verified_at != NULL)Da @else Ne @endif</td>--}}
+                <td>{{ $user->address }}</td>
                 <td><img class="img-responsive" width="52" height="52" src="{{ secure_asset($user->image) }}"/></td>
                 <td><a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-dark waves-effect btn-xs"><i class="material-icons">edit</i></a></td>
                 <td>
