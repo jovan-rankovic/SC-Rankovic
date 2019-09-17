@@ -17,9 +17,6 @@
         },
         methods: {
             cardNumberSearch(e) {
-                if (e.which === 13){
-                    e.preventDefault();
-                }
                 axios.get('/api/users/card_number_search', {
                     params: {
                         card_number: this.card_number
