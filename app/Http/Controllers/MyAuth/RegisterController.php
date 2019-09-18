@@ -19,9 +19,7 @@ class RegisterController extends Controller
                     'email' => $request->email,
                     'password' => md5($request->regPasswd),
                     'image' => 'images/user/new.jpg',
-                    'role_id' => 2,
-                    'remember_token' => md5(time().$request->email),
-                    'email_verified_at' => date('Y-d-m H:i:s')
+                    'role_id' => 2
                 ]);
 
                 \Log::info($user->first_name.' '.$user->last_name.' registered.');
