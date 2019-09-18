@@ -20,8 +20,8 @@ class RegisterController extends Controller
                     'password' => md5($request->regPasswd),
                     'image' => 'images/user/new.jpg',
                     'role_id' => 2,
-                    'phone' => '060000000',
-                    'address' => 'Bez adrese.',
+                    'phone' => '0600000000',
+                    'address' => 'Bez adrese',
                     'birth_date' => '2019-09-18'
                 ]);
 
