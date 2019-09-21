@@ -7,11 +7,19 @@ use App\Reservation;
 use App\Training;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
     public function store(ReservationRequest $request)
     {
+        $reservationCount = Reservation::where('user_id', $request->user_id)
+            ->where('date', $request->date)
+            ->count();
+
+        if ($reservationCount > 1)
+            return response(array($reservationCount), 403);
+
         Reservation::create([
             'user_id' => $request->user_id,
             'training_id' => $request->training_id,
