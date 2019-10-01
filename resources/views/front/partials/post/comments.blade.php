@@ -1,4 +1,5 @@
 <div class="blog-comment wow fadeInUp" id="comments" data-wow-delay="1s" xmlns="http://www.w3.org/1999/html">
+<div class="blog-comment wow fadeInUp" id="comments" data-wow-delay="1s" xmlns="http://www.w3.org/1999/html">
     <br/>
 
     @if($post->comments->count() == 0)
@@ -57,8 +58,6 @@
                                         <button type="button" class="close" data-dismiss="modal">
                                             &times;
                                         </button>
-                                        <h7>Izmeni komentar</h7>
-
                                             <fieldset>
 
                                                 <div class="group">
@@ -85,7 +84,7 @@
 
                 <h4 class="media-heading">{{ $comment->user->first_name }} {{ $comment->user->last_name }} @if($comment->user->id == $post->user->id) <small class="error">Autor</small> @endif</h4>
                 <h5>{{ $comment->updated_at->format('d.m.Y. H:i') }} @if($comment->updated_at != $comment->created_at) <i>(izmenjeno)</i> @endif</h5>
-                <p id="comment">{{ $comment->content }}</p>
+                <p class="comment">{{ $comment->content }}</p>
             </div>
         </div>
 

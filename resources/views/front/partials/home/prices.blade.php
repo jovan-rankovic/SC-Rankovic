@@ -27,6 +27,11 @@
 
             @endforeach
 
+            <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="1.3s">
+                <h4 class="fa fa-arrow-up wow fadeInUp animated price-benefits"> PRODUŽETAK UPLATA DO 7 DANA</h4>
+                <h4 class="fa fa-car wow fadeInUp animated price-benefits"> BESPLATAN PARKING</h4>
+            </div>
+
         </div>
     </div>
 </section>
