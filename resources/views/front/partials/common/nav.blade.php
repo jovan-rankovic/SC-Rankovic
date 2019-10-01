@@ -55,7 +55,6 @@
             <div class="bs-example bs-example-tabs">
                 <ul id="myTab" class="nav nav-tabs">
                     <li id="tab1" class=" active tab-style login-shadow "><a href="#signin" data-toggle="tab">Uloguj se</a></li>
-                    <li id="tab2" class=" tab-style "><a href="#signup" data-toggle="tab">Registruj se</a></li>
 
                 </ul>
             </div>
@@ -88,38 +87,7 @@
                             </fieldset>
                         </form>
                     </div>
-
-                    <!-- Registration Form -->
-                    <div class="tab-pane fade" id="signup">
-                        <form class="form-horizontal" method="POST" action="{{ url('/register') }}">
-                            <fieldset>
-                                @csrf
-                                <div class="group">
-                                    <input class="input" type="text" id="regFN" name="regFN" required /><span class="highlight"></span><span class="bar"></span>
-                                    <label class="label" for="regFN">Ime</label></div>
-
-                                <div class="group">
-                                    <input class="input" type="text" id="regLN" name="regLN" required /><span class="highlight"></span><span class="bar"></span>
-                                    <label class="label" for="regLN">Prezime</label></div>
-
-                                <div class="group">
-                                    <input class="input" type="text" id="email" name="email" required /><span class="highlight"></span><span class="bar"></span>
-                                    <label class="label" for="regEmail">E-mail</label></div>
-
-                                <div class="group">
-                                    <input class="input" type="password" id="regPasswd" name="regPasswd" required /><span class="highlight"></span><span class="bar"></span>
-                                    <label class="label" for="regPasswd">Lozinka</label></div>
-                                <em></em>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="signup"></label>
-                                    <div class="controls">
-                                        <button id="regBtn" name="regBtn" class="btn btn-primary btn-block">Potvrdi</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>
